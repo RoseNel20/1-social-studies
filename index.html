@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1st Grade Social Studies Scope & Sequence</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, #fef3e8 0%, #e8f4fd 50%, #f0e8fe 100%);
+    min-height: 100vh;
+    padding: 30px 20px 50px;
+  }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    margin-bottom: 44px;
+  }
+  .header .grade-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #f97316, #a855f7);
+    color: white;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 22px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+  .header h1 {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #1e1e4a;
+    line-height: 1.2;
+  }
+  .header h1 span {
+    background: linear-gradient(135deg, #f97316, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .header p {
+    color: #6b7280;
+    font-size: 1rem;
+    margin-top: 8px;
+    font-weight: 600;
+  }
+
+  /* ── Flow wrapper ── */
+  .flow-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+
+  /* ── Unit blocks ── */
+  .unit-block {
+    width: 100%;
+    border-radius: 24px;
+    padding: 28px 32px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .unit-block:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.14);
+  }
+
+  /* Unit colour themes */
+  .unit-1 { background: linear-gradient(135deg, #fff7ed, #ffe4cc); border: 2px solid #f97316; }
+  .unit-2 { background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 2px solid #3b82f6; }
+  .unit-3 { background: linear-gradient(135deg, #f5f3ff, #ede9fe); border: 2px solid #8b5cf6; }
+
+  /* ── Unit header ── */
+  .unit-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .unit-icon {
+    font-size: 2.6rem;
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+  }
+  .unit-1 .unit-icon { background: linear-gradient(135deg, #fed7aa, #fb923c); }
+  .unit-2 .unit-icon { background: linear-gradient(135deg, #bfdbfe, #60a5fa); }
+  .unit-3 .unit-icon { background: linear-gradient(135deg, #ddd6fe, #a78bfa); }
+
+  .unit-meta { flex: 1; }
+  .unit-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .unit-1 .unit-label { color: #c2410c; }
+  .unit-2 .unit-label { color: #1d4ed8; }
+  .unit-3 .unit-label { color: #6d28d9; }
+
+  .unit-title {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #1e1e4a;
+    line-height: 1.25;
+  }
+
+  /* ── Lesson grid ── */
+  .lessons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+  }
+
+  /* ── Lesson cards ── */
+  .lesson-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: rgba(255,255,255,0.82);
+    backdrop-filter: blur(6px);
+    border-radius: 14px;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: inherit;
+    border: 1.5px solid rgba(255,255,255,0.9);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+  }
+  .lesson-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    background: rgba(255,255,255,0.97);
+  }
+
+  .lesson-num {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    padding: 4px 9px;
+    border-radius: 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .unit-1 .lesson-num { background: #fed7aa; color: #9a3412; }
+  .unit-2 .lesson-num { background: #bfdbfe; color: #1e3a8a; }
+  .unit-3 .lesson-num { background: #ddd6fe; color: #4c1d95; }
+
+  .lesson-text { flex: 1; }
+  .lesson-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #1e1e4a;
+    line-height: 1.35;
+  }
+  .lesson-subtitle {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #16a34a;
+    line-height: 1.35;
+    margin-top: 1px;
+  }
+
+  /* ── Flowing arrows ── */
+  .arrow-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+    gap: 0;
+  }
+  .arrow-line {
+    width: 4px;
+    height: 28px;
+    border-radius: 2px;
+  }
+  .arrow-1 { background: linear-gradient(to bottom, #f97316, #3b82f6); }
+  .arrow-2 { background: linear-gradient(to bottom, #3b82f6, #8b5cf6); }
+
+  .arrow-head {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+  }
+  .arrow-1 .arrow-head { border-top: 14px solid #3b82f6; }
+  .arrow-2 .arrow-head { border-top: 14px solid #8b5cf6; }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #9ca3af;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="grade-badge">1st Grade · Social Studies</div>
+  <h1>My <span>Community &amp; World</span></h1>
+  <p>Scope &amp; Sequence · 3 Units · 16 Lessons &nbsp;|&nbsp; Click any lesson card to open the lesson</p>
+</div>
+
+<div class="flow-container">
+
+  <!-- ═══════════ UNIT 1 ═══════════ -->
+  <div class="unit-block unit-1">
+    <div class="unit-header">
+      <div class="unit-icon">🏘️</div>
+      <div class="unit-meta">
+        <div class="unit-label">Unit 1</div>
+        <div class="unit-title">My Community</div>
+      </div>
+    </div>
+    <div class="lessons-grid">
+
+      <a class="lesson-card" href="https://docs.google.com/document/d/1O6_-rz5eNxey9u-n8fpWnbYvkwwCx6TCJDG2ElS-4I0/edit?usp=drive_link" target="_blank">
+        <div class="lesson-num">1.1.1</div>
+        <div class="lesson-text">
+          <div class="lesson-title">Let's Be Friends</div>
+          <div class="lesson-subtitle">Seamos amigos</div>
+        </div>
+      </a>
+
+      <a class="lesson-card" href="https://docs.google.com/document/d/1te_tn-HvsYe7Hk6r0e3tdtksNdz_WuEgrjmOYWyalW8/edit?usp=drive_link" target="_blank">
+        <div class="lesson-num">1.1.2</div>
+        <div class="lesson-text">
+          <div class="lesson-title">Where I Live: Places in my Community</div>
+          <div class="lesson-subtitle">Lugares en mi comunidad</div>
+        </div>
+      </a>
+
+      <a class="lesson-card" href="https://docs.google.com/document/d/1kXDf4xFrvpfksr0Wq8a_-ozcHCXJojhjxBpLSpIHRfM/edit?usp=drive_link" target="_blank">
+        <div class="lesson-num">1.1.3</div>
+        <div class="lesson-text">
+          <div class="lesson-title">Why do Communities Need Rules?</div>
+          <div class="lesson-subtitle">¿Por qué necesitan reglas las comunidades?</div>
+        </div>
+      </a>
+
+      <a class="lesson-card" href="https://docs.google.com/document/d/1eoeCIS2QkSfRvpqtZCt7x_Yp_RqZt6kTYHybvgxL9B4/edit?usp=drive_link" target="_blank">
+        <div class="lesson-num">1.1.4</div>
+        <div class="lesson-text">
+          <div class="lesson-title">The Constitution &amp; Citizenship</div>
+          <div class="lesson-subtitle">La Constitución y la cuidadanía</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- Arrow 1→2 -->
+  <div class="arrow-connector">
+    <div class="arrow-line arrow-1"></div>
+    <div class="arrow-1"><div class="arrow-head"></div></div>
+  </div>
+
+  <!-- ═══════════ UNIT 2 ═══════════ -->
+  <div class="unit-block unit-2">
+    <div class="unit-header">
+      <div class="unit-icon">🤝</div>
+      <div class="unit-meta">
+        <div class="unit-label">Unit 2</div>
+        <div class="unit-title">Teamwork</div>
+      </div>
+    </div>
+    <div class="lessons-grid">
+
+      <a class="lesson-card" href="https://docs.google.com/document/d/1c4TvSa4Yu6T1Ds4ZBzSVHS5NwWl6slCXqP2Hkr-K91I/edit?usp=drive_link" target="_blank">
+        <div class="lesson-num">1.2.1</div>
+        <div class="lesson-text">
+          <div class="lesson-title">Families Use Teamwork</div>
+          <div class="lesson-subtitle">Las familias trabajan como equipos</div>
+        </div>
+      </a>
+
+      <a class="lesson-card" href="https://docs.google.com/document/d/12A7EvFWl8octYWwTSOL8Nuks70eGTcp7Tiho6a8mPnU/edit?usp=drive_link" target="_blank">
+        <div class="lesson-num">1.2.2</div>
+        <div class="lesson-text">
+          <div class="lesson-title">Teamwork is Powerful</div>
+          <div class="lesson-subtitle">Trabajar en equipo es poderoso</div>
+        </div>
+      </a>
+
+      <a class="lesson-card" href="https://docs.google.com/document/d/18BDR4yHt1dQLSRmRgXH4g7xTXDTbvxDE6TtENouxxPo/edit?usp=drive_link" target="_blank">
+        <div class="lesson-num">1.2.3</div>
+        <div class="lesson-text">
+          <div class="lesson-title">Children Use Teamwork</div>
+          <div class="lesson-subtitle">Los niños alcanzan más en un equipo</div>
+        </div>
+      </a>
+
+      <a class="lesson-card" href="https://docs.google.com/document/d/1SLYYR7bCCeuuh5xaX__63hQ9Cn72YIuIi_tX2sbFIlY/edit?usp=drive_link" target="_blank">
+        <div class="lesson-num">1.2.4</div>
+        <div class="lesson-text">
+          <div class="lesson-title">Using Teamwork to Protect What's Important</div>
+        </div>
+      </a>
+
+      <a class="lesson-card" href="https://docs.google.com/document/d/12q8L9-APAuxDSegElwD1G1x-wR_30BwIla29YEt7bps/edit?usp=drive_link" target="_blank">
+        <div class="lesson-num">1.2.5</div>
+        <div class="lesson-text">
+          <div class="lesson-title">Teamwork Connects Us</div>
+        </div>
+      </a>
+
+      <a class="lesson-card" href="https://docs.google.com/document/d/1Kdd1hDVx5Alf03UuRMqO-oETBnFc0YK_9Ble5a7xzss/edit?usp=drive_link" target="_blank">
+        <div class="lesson-num">1.2.6</div>
+        <div class="lesson-text">
+          <div class="lesson-title">Changing the Future with Teamwork</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- Arrow 2→3 -->
+  <div class="arrow-connector">
+    <div class="arrow-line arrow-2"></div>
+    <div class="arrow-2"><div class="arrow-head"></div></div>
+  </div>
+
+  <!-- ═══════════ UNIT 3 ═══════════ -->
+  <div class="unit-block unit-3">
+    <div class="unit-header">
+      <div class="unit-icon">🌍</div>
+      <div class="unit-meta">
+        <div class="unit-label">Unit 3</div>
+        <div class="unit-title">Families &amp; Global Connections</div>
+      </div>
+    </div>
+    <div class="lessons-grid">
+
+      <a class="lesson-card" href="https://docs.google.com/document/d/1PFBesnTh_wVwkC3v_jlKUnSs0t1tId1Ih4QpETAT4CI/edit?usp=drive_link" target="_blank">
+        <div class="lesson-num">1.3.1</div>
+        <div class="lesson-text">
+          <div class="lesson-title">Wants and Needs Within Families</div>
+          <div class="lesson-subtitle">Deseos y nececidades de las familias</div>
+        </div>
+      </a>
+
+      <a class="lesson-card" href="https://docs.google.com/document/d/1y6RdreCDnTS6k2BtkpyxlvndksCx6ocUmgdVmzPi__Q/edit?usp=drive_link" target="_blank">
+        <div class="lesson-num">1.3.2</div>
+        <div class="lesson-text">
+          <div class="lesson-title">Why Do Families Move? Then</div>
+          <div class="lesson-subtitle">¿Por qué se mudan las familias? Antes</div>
+        </div>
+      </a>
+
+      <a class="lesson-card" href="https://docs.google.com/document/d/1qy5pTLDDJbucKeLvNVii69Ir-Qgb6z6QGzoHMBWbmzo/edit?usp=drive_link" target="_blank">
+        <div class="lesson-num">1.3.3</div>
+        <div class="lesson-text">
+          <div class="lesson-title">Why Do Families Move? Now</div>
+          <div class="lesson-subtitle">¿Por qué se mudan las familias? Ahora</div>
+        </div>
+      </a>
+
+      <a class="lesson-card" href="https://docs.google.com/document/d/1fJpRWKy0F3iKeNZdeSSZsmJxXI9K-F1z1wqZC1T8g-A/edit?usp=drive_link" target="_blank">
+        <div class="lesson-num">1.3.4</div>
+        <div class="lesson-text">
+          <div class="lesson-title">In Between Homes</div>
+          <div class="lesson-subtitle">Entre hogares</div>
+        </div>
+      </a>
+
+      <a class="lesson-card" href="https://docs.google.com/document/d/1uCBZaan0uyFGqnSe2ORmHINfwoqT97qOoiN6UJG5cWs/edit?usp=drive_link" target="_blank">
+        <div class="lesson-num">1.3.5</div>
+        <div class="lesson-text">
+          <div class="lesson-title">Global Environments</div>
+          <div class="lesson-subtitle">Entornos globales</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">1st Grade Social Studies · 3 Units · 15 Lessons &nbsp;|&nbsp; Click any lesson card to open the lesson</div>
+
+</body>
+</html>
